@@ -1,4 +1,4 @@
-import app from "./server"
+import app from "./server.js"
 import mongodb from "mongodb"
 import dotenv from "dotenv"
 // configure dotenv
@@ -11,16 +11,17 @@ MongoClient.connect(
   {
     poolSize: 50,
     wtimeout: 2500,
-    useNewUrlParser: true
+    useNewUrlParse: true
   }
-    .catch(err => {
-      console.error(err.stack)
-      process.exit(1)
-    })
 )
+  .catch(err => {
+    console.error(err.stack)
+    process.exit(1)
+  })
   .then(async client => {
-    // how we start our web server
     app.listen(port, () => {
       console.log(`listening on port ${port}`)
     })
   })
+
+
